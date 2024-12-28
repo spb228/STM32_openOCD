@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+	    "includePath": [
+            "${workspaceFolder}/**",
+            "C:/STM32Cube/STM32CubeF4/STM32Cube_FW_F4_V1.28.0/Drivers/STM32F4xx_HAL_Driver/Inc",
+            "C:/STM32Cube/STM32CubeF4/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+            "C:/STM32Cube/STM32CubeF4/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include"
+],
+            "defines": [
+                "USE_HAL_DRIVER",
+                "STM32F401xC"
+            ],
+            "compilerPath": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/arm-none-eabi-gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-arm"
+        }
+    ],
+    "version": 4
+}

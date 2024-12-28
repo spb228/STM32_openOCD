@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug (OpenOCD)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/blinky.elf",
+            "configFiles": [
+                "interface/stlink-v2-1.cfg",    // For NUCLEO boards
+                "target/stm32f4x.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/STM32F401.svd",
+            //"runToEntryPoint": "main",
+            "showDevDebugOutput": "raw",
+            "postRestartCommands": ["load"],
+            "liveWatch": true
+        }
+    ]
+}
