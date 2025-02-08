@@ -21,7 +21,7 @@ MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
 
 # Source Files
 C_SOURCES = \
-$(SRC_DIR)/main.c \
+$(SRC_DIR)/main_bare_metal.c \
 $(SRC_DIR)/startup.c
 
 # Includes

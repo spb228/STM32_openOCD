@@ -9,28 +9,32 @@
 #define GPIOA_ODR      (*(volatile uint32_t *)(GPIOA_BASE + 0x14))
 
 // Bit positions
-#define RCC_AHB1ENR_GPIOAEN  (1U << 0)
+//#define RCC_AHB1ENR_GPIOAEN  (1U << 0)
 #define LED_PIN              5  // PA5 is the onboard LED
 
 // Simple delay function
-static void delay(volatile uint32_t count) {
-    while (count--) {
+void delay(uint32_t delay)
+{
+    while (delay--)
+    {
         __asm("nop");
     }
 }
 
-int main(void) {
+int main(void) 
+{
     // Enable GPIOA clock
-    RCC_AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+    RCC_AHB1ENR |= (1 << 0); 
 
     // Configure PA5 as output
-    GPIOA_MODER &= ~(3U << (LED_PIN * 2));  // Clear bits
-    GPIOA_MODER |= (1U << (LED_PIN * 2));   // Set as output
+    GPIOA_MODER &= ~(3 << (LED_PIN * 2)); // clear out bits 10 and 11
+    GPIOA_MODER |= (1 << (LED_PIN * 2)); // set bit 10 for output
 
-    while (1) {
-        // Toggle LED
-        GPIOA_ODR ^= (1U << LED_PIN);
-        delay(1000000);
+    // while loop
+    while (1)
+    {
+        GPIOA_ODR ^= (1 << LED_PIN); 
+        delay(8400000);
     }
 
     return 0;
