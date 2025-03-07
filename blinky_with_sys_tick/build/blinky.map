@@ -1,0 +1,143 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/main.o
+ .data          0x00000000        0x0 build/main.o
+ .bss           0x00000000        0x0 build/main.o
+ .text          0x00000000        0x0 build/startup.o
+ .data          0x00000000        0x0 build/startup.o
+ .bss           0x00000000        0x0 build/startup.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00080000         xr
+RAM              0x20000000         0x00018000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/main.o
+LOAD build/startup.o
+START GROUP
+LOAD C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libgcc.a
+LOAD C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc.a
+END GROUP
+
+.text           0x08000000      0x168
+                0x08000000                        _text = .
+ *(.isr_vector)
+ .isr_vector    0x08000000       0x40 build/startup.o
+                0x08000000                vectors
+ *(.text*)
+ .text.delay    0x08000040        0xa build/main.o
+                0x08000040                delay
+ *fill*         0x0800004a        0x2 
+ .text.startup.main
+                0x0800004c       0xd8 build/main.o
+                0x0800004c                main
+ .text.Default_Handler
+                0x08000124        0x2 build/startup.o
+                0x08000124                Default_Handler
+ *fill*         0x08000126        0x2 
+ .text.Reset_Handler
+                0x08000128       0x40 build/startup.o
+                0x08000128                Reset_Handler
+ *(.rodata*)
+                0x08000168                        _etext = .
+
+.glue_7         0x08000168        0x0
+ .glue_7        0x08000168        0x0 linker stubs
+
+.glue_7t        0x08000168        0x0
+ .glue_7t       0x08000168        0x0 linker stubs
+
+.vfp11_veneer   0x08000168        0x0
+ .vfp11_veneer  0x08000168        0x0 linker stubs
+
+.v4_bx          0x08000168        0x0
+ .v4_bx         0x08000168        0x0 linker stubs
+
+.iplt           0x08000168        0x0
+ .iplt          0x08000168        0x0 build/main.o
+
+.rel.dyn        0x08000168        0x0
+ .rel.iplt      0x08000168        0x0 build/main.o
+
+.data           0x20000000        0x0 load address 0x08000168
+                0x20000000                        _sdata = .
+ *(.data*)
+                0x20000000                        _edata = .
+
+.igot.plt       0x20000000        0x0 load address 0x08000168
+ .igot.plt      0x20000000        0x0 build/main.o
+
+.bss            0x20000000        0x0 load address 0x08000168
+                0x20000000                        _sbss = .
+ *(.bss*)
+ *(COMMON)
+                0x20000000                        _ebss = .
+OUTPUT(build/blinky.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0x27e
+ .debug_info    0x00000000      0x10d build/main.o
+ .debug_info    0x0000010d      0x171 build/startup.o
+
+.debug_abbrev   0x00000000      0x1bf
+ .debug_abbrev  0x00000000       0xd9 build/main.o
+ .debug_abbrev  0x000000d9       0xe6 build/startup.o
+
+.debug_loc      0x00000000      0x153
+ .debug_loc     0x00000000       0x79 build/main.o
+ .debug_loc     0x00000079       0xda build/startup.o
+
+.debug_aranges  0x00000000       0x50
+ .debug_aranges
+                0x00000000       0x28 build/main.o
+ .debug_aranges
+                0x00000028       0x28 build/startup.o
+
+.debug_ranges   0x00000000       0x48
+ .debug_ranges  0x00000000       0x30 build/main.o
+ .debug_ranges  0x00000030       0x18 build/startup.o
+
+.debug_line     0x00000000      0x301
+ .debug_line    0x00000000      0x1f7 build/main.o
+ .debug_line    0x000001f7      0x10a build/startup.o
+
+.debug_str      0x00000000      0x1e5
+ .debug_str     0x00000000      0x1e5 build/main.o
+                                0x1b4 (size before relaxing)
+ .debug_str     0x000001e5      0x1f7 build/startup.o
+
+.comment        0x00000000       0x45
+ .comment       0x00000000       0x45 build/main.o
+                                 0x46 (size before relaxing)
+ .comment       0x00000045       0x46 build/startup.o
+
+.ARM.attributes
+                0x00000000       0x34
+ .ARM.attributes
+                0x00000000       0x34 build/main.o
+ .ARM.attributes
+                0x00000034       0x34 build/startup.o
+
+.debug_frame    0x00000000       0x70
+ .debug_frame   0x00000000       0x38 build/main.o
+ .debug_frame   0x00000038       0x38 build/startup.o
+
+Cross Reference Table
+
+Symbol                                            File
+Default_Handler                                   build/startup.o
+Reset_Handler                                     build/startup.o
+_ebss                                             build/startup.o
+_edata                                            build/startup.o
+_etext                                            build/startup.o
+_sbss                                             build/startup.o
+_sdata                                            build/startup.o
+delay                                             build/main.o
+main                                              build/main.o
+                                                  build/startup.o
+vectors                                           build/startup.o
